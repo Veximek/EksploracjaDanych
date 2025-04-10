@@ -94,6 +94,7 @@ data_hp = data_hp %>%  mutate(education = case_when(
   education == "sredni" ~ 2,
   education == "wyszy" ~ 3,
 ))
+data_hp$year = sample(c(1925,2025), 1000,replace=TRUE)
 
 data_is = data_is %>% mutate(education = case_when(
   education == "primary" ~ 1,
@@ -170,7 +171,6 @@ data_ukr = data_ukr %>% select(-ID)
 data_ukr = data_ukr %>% rename(education = Education)
 data_ukr$year = sample(c(1925,2025), 100, replace=TRUE)
 data_ukr$sex = sample(c(0,1),100,replace=TRUE)
-data_ukr = data_ukr %>% rename(sex = Płeć)
 data_ukr = data_ukr %>% rename(height = Height)
 data_ukr = data_ukr %>% rename(weight = Weight)
 data_ukr = data_ukr %>% rename(age = Age)
@@ -232,7 +232,7 @@ geom_segment(aes(x = year_2025,
                  y = country, 
                  yend = country), 
              color = "darkgrey", size = 1.5,
-             arrow = arrow(length = unit(0.04, "npc"))) +  # Strzałka
+             arrow = arrow(length = unit(0.03, "npc"))) +  # Strzałka
   geom_point(aes(x = year_2025, y = country), 
              color = "blue", size = 4) +
   geom_point(aes(x = year_1925, y = country), color = "red", size = 4) +
